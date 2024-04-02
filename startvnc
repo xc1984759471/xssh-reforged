@@ -1,0 +1,13 @@
+#!/bin/bash
+cd /root
+mkdir /root/.vnc
+killall Xvnc
+rm /root/.vnc/passwd
+echo "00000000: 29d1 fd68 5d68 87dd"|xxd -r >> /root/.vnc/passwd
+nohup Xvnc -ZlibLevel=0 -a 5 -alwaysshared -SendPrimary 0 -SetPrimary 0 -geometry 1280x800 -once -depth 24 -deferglyphs 16 -rfbauth /root/.vnc/passwd -desktop uos-20-SP1_tmoe-linux-vnc :1 &
+export DISPLAY=:1
+xfce4-terminal &
+xfwm4 &
+sleep 3
+#ls /root/noVNC
+

@@ -1,0 +1,10 @@
+version: "3.9"  # optional since v1.27.0
+services:
+  debian-test:
+    image: debian
+    build: .
+    ports:
+      - "80:80"
+      - "8888:8888"
+      - "6080:6080"
+      - "5901:5901"
